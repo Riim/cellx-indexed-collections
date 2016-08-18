@@ -1,0 +1,32 @@
+{
+  "name": "cellx-indexed-collections",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/cellx-indexed-collections.js",
+  "scripts": {
+    "build": "./node_modules/.bin/webpack src/cellx-indexed-collections.js dist/cellx-indexed-collections.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Riim/cellx-indexed-collections.git"
+  },
+  "author": "Dmitry Vibe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Riim/cellx-indexed-collections/issues"
+  },
+  "homepage": "https://github.com/Riim/cellx-indexed-collections#readme",
+  "devDependencies": {
+    "babel-core": "^6.13.2",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.13.2",
+    "eslint": "^3.3.1",
+    "eslint-loader": "^1.5.0",
+    "webpack": "^1.13.2"
+  },
+  "peerDependencies": {
+    "cellx": "^1.6.30"
+  }
+}
