@@ -1,8 +1,10 @@
-let { ObservableCollectionMixin, js: { Map }, utils: { nextUID } } = require('cellx');
+import { ObservableCollectionMixin, JS, Utils } from 'cellx';
 
 let { _registerValue, _unregisterValue } = ObservableCollectionMixin.prototype;
+let Map = JS.Map;
+let nextUID = Utils.nextUID;
 
-let IndexedCollectionMixin = ObservableCollectionMixin.extend({
+export default ObservableCollectionMixin.extend({
 	constructor: function IndexedCollectionMixin(opts) {
 		this._indexesConfig = opts && opts.indexes ?
 			opts.indexes.map(indexConfig => typeof indexConfig == 'string' ? { keyName: indexConfig } : indexConfig) :
@@ -85,5 +87,3 @@ let IndexedCollectionMixin = ObservableCollectionMixin.extend({
 		_unregisterValue.call(this, value);
 	}
 });
-
-module.exports = IndexedCollectionMixin;

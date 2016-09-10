@@ -1,9 +1,3 @@
-let IndexedCollectionMixin = require('./IndexedCollectionMixin');
-let IndexedMap = require('./IndexedMap');
-let IndexedList = require('./IndexedList');
-
-module.exports = {
-	IndexedCollectionMixin,
-	IndexedMap,
-	IndexedList
-};
+export { default as IndexedCollectionMixin } from './IndexedCollectionMixin';
+export { default as IndexedMap } from './IndexedMap';
+export { default as IndexedList } from './IndexedList';

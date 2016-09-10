@@ -1,5 +1,5 @@
-let { ObservableList } = require('cellx');
-let IndexedCollectionMixin = require('./IndexedCollectionMixin');
+import { ObservableList } from 'cellx';
+import IndexedCollectionMixin from './IndexedCollectionMixin';
 
 let { contains, get } = ObservableList.prototype;
 
@@ -15,7 +15,7 @@ let { contains, get } = ObservableList.prototype;
  *     indexes?: Array<string|{ keyName: string, keyGenerator?: () -> string }>
  * }) -> IndexedList;
  */
-let IndexedList = ObservableList.extend({
+export default ObservableList.extend({
 	Implements: [IndexedCollectionMixin],
 
 	constructor: function IndexedList(items, opts) {
@@ -57,5 +57,3 @@ let IndexedList = ObservableList.extend({
 		return get.call(this, key);
 	}
 });
-
-module.exports = IndexedList;

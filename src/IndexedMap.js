@@ -1,5 +1,5 @@
-let { ObservableMap } = require('cellx');
-let IndexedCollectionMixin = require('./IndexedCollectionMixin');
+import { ObservableMap } from 'cellx';
+import IndexedCollectionMixin from './IndexedCollectionMixin';
 
 let { contains, get } = ObservableMap.prototype;
 
@@ -13,7 +13,7 @@ let { contains, get } = ObservableMap.prototype;
  *     indexes?: Array<string|{ keyName: string, keyGenerator?: () -> string }>
  * }) -> IndexedMap;
  */
-let IndexedMap = ObservableMap.extend({
+export default ObservableMap.extend({
 	Implements: [IndexedCollectionMixin],
 
 	constructor: function IndexedMap(items, opts) {
@@ -55,5 +55,3 @@ let IndexedMap = ObservableMap.extend({
 		return get.call(this, key);
 	}
 });
-
-module.exports = IndexedMap;
