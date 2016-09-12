@@ -1,7 +1,7 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('cellx')) :
 	typeof define === 'function' && define.amd ? define(['exports', 'cellx'], factory) :
-	(factory((global.cellxIndexedCollections = global.cellxIndexedCollections || {}),global.cellx));
+	(factory((global.cellxIndexedCollections = global['cellx-indexed-collections'] = global.cellxIndexedCollections || {}),global.cellx));
 }(this, (function (exports,cellx) { 'use strict';
 
 var _ObservableCollection = cellx.ObservableCollectionMixin.prototype;
