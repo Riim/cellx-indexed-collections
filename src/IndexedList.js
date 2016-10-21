@@ -9,7 +9,7 @@ let { contains, get } = ObservableList.prototype;
  * @implements {IndexedCollectionMixin}
  *
  * @typesign new IndexedList(items?: Array|cellx.ObservableList, opts?: {
- *     adoptsItemChanges?: boolean,
+ *     adoptsValueChanges?: boolean,
  *     comparator?: (a, b) -> int,
  *     sorted?: boolean,
  *     indexes?: Array<string|{ keyName: string, keyGenerator?: () -> string }>

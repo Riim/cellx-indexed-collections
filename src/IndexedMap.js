@@ -9,7 +9,7 @@ let { contains, get } = ObservableMap.prototype;
  * @implements {IndexedCollectionMixin}
  *
  * @typesign new IndexedMap(entries?: Object|cellx.ObservableMap|Map|Array<{ 0, 1 }>, opts?: {
- *     adoptsItemChanges?: boolean,
+ *     adoptsValueChanges?: boolean,
  *     indexes?: Array<string|{ keyName: string, keyGenerator?: () -> string }>
  * }) -> IndexedMap;
  */

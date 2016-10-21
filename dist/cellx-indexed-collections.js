@@ -11,7 +11,7 @@ var _unregisterValue2 = _ObservableCollection._unregisterValue;
 var Map = cellx.JS.Map;
 var nextUID = cellx.Utils.nextUID;
 
-var IndexedCollectionMixin = cellx.ObservableCollectionMixin.extend({
+var IndexedCollectionMixin$1 = cellx.ObservableCollectionMixin.extend({
 	constructor: function IndexedCollectionMixin(opts) {
 		this._indexesConfig = opts && opts.indexes ? opts.indexes.map(function (indexConfig) {
 			return typeof indexConfig == 'string' ? { keyName: indexConfig } : indexConfig;
@@ -106,16 +106,16 @@ var _get = _ObservableMap$protot.get;
  * @implements {IndexedCollectionMixin}
  *
  * @typesign new IndexedMap(entries?: Object|cellx.ObservableMap|Map|Array<{ 0, 1 }>, opts?: {
- *     adoptsItemChanges?: boolean,
+ *     adoptsValueChanges?: boolean,
  *     indexes?: Array<string|{ keyName: string, keyGenerator?: () -> string }>
  * }) -> IndexedMap;
  */
 
-var IndexedMap = cellx.ObservableMap.extend({
-	Implements: [IndexedCollectionMixin],
+var IndexedMap$1 = cellx.ObservableMap.extend({
+	Implements: [IndexedCollectionMixin$1],
 
 	constructor: function IndexedMap(items, opts) {
-		IndexedCollectionMixin.call(this, opts);
+		IndexedCollectionMixin$1.call(this, opts);
 		cellx.ObservableMap.call(this, items, opts);
 	},
 
@@ -165,18 +165,18 @@ var _get$1 = _ObservableList$proto.get;
  * @implements {IndexedCollectionMixin}
  *
  * @typesign new IndexedList(items?: Array|cellx.ObservableList, opts?: {
- *     adoptsItemChanges?: boolean,
+ *     adoptsValueChanges?: boolean,
  *     comparator?: (a, b) -> int,
  *     sorted?: boolean,
  *     indexes?: Array<string|{ keyName: string, keyGenerator?: () -> string }>
  * }) -> IndexedList;
  */
 
-var IndexedList = cellx.ObservableList.extend({
-	Implements: [IndexedCollectionMixin],
+var IndexedList$1 = cellx.ObservableList.extend({
+	Implements: [IndexedCollectionMixin$1],
 
 	constructor: function IndexedList(items, opts) {
-		IndexedCollectionMixin.call(this, opts);
+		IndexedCollectionMixin$1.call(this, opts);
 		cellx.ObservableList.call(this, items, opts);
 	},
 
@@ -216,9 +216,9 @@ var IndexedList = cellx.ObservableList.extend({
 	}
 });
 
-exports.IndexedCollectionMixin = IndexedCollectionMixin;
-exports.IndexedMap = IndexedMap;
-exports.IndexedList = IndexedList;
+exports.IndexedCollectionMixin = IndexedCollectionMixin$1;
+exports.IndexedMap = IndexedMap$1;
+exports.IndexedList = IndexedList$1;
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
