@@ -93,6 +93,15 @@ var IndexedCollectionMixin$1 = cellx.ObservableCollectionMixin.extend({
 		}
 
 		_unregisterValue2.call(this, value);
+	},
+
+
+	/**
+  * @override
+  */
+	clear: function clear() {
+		this._indexes = Object.create(null);
+		Object.getPrototypeOf(this.constructor.prototype).clear.call(this);
 	}
 });
 

@@ -85,5 +85,13 @@ export default ObservableCollectionMixin.extend({
 		}
 
 		_unregisterValue.call(this, value);
+	},
+
+	/**
+	 * @override
+	 */
+	clear() {
+		this._indexes = Object.create(null);
+		Object.getPrototypeOf(this.constructor.prototype).clear.call(this);
 	}
 });
