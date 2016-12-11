@@ -8,11 +8,11 @@ let { contains, get } = ObservableList.prototype;
  * @extends {cellx.ObservableList}
  * @implements {IndexedCollectionMixin}
  *
- * @typesign new IndexedList(items?: Array|cellx.ObservableList, opts?: {
+ * @typesign new IndexedList(items?: Array | cellx.ObservableList, opts?: {
  *     adoptsValueChanges?: boolean,
  *     comparator?: (a, b) -> int,
  *     sorted?: boolean,
- *     indexes?: Array<string|{ keyName: string, keyGenerator?: () -> string }>
+ *     indexes?: Array<string | { key: string, valueGenerator?: () -> string }>
  * }) -> IndexedList;
  */
 export default ObservableList.extend({
@@ -26,34 +26,34 @@ export default ObservableList.extend({
 	/**
 	 * @override
 	 * @typesign (value) -> boolean;
-	 * @typesign (key, keyName?: string) -> boolean;
+	 * @typesign (indexValue, indexKey: string) -> boolean;
 	 */
-	contains(key, keyName) {
+	contains(indexValue, indexKey) {
 		if (arguments.length >= 2) {
-			let index = this._indexes[keyName];
-			return index ? index.has(key) : false;
+			let index = this._indexes[indexKey];
+			return !!index && index.has(indexValue);
 		}
 
-		return contains.call(this, key);
+		return contains.call(this, indexValue);
 	},
 
 	/**
 	 * @override
 	 * @typesign (index: int) -> *;
-	 * @typesign (key, keyName?: string) -> *;
+	 * @typesign (indexValue, indexKey: string) -> *;
 	 */
-	get(key, keyName) {
+	get(indexValue, indexKey) {
 		if (arguments.length >= 2) {
-			let index = this._indexes[keyName];
+			let index = this._indexes[indexKey];
 
 			if (index) {
-				let items = index.get(key);
-				return items && items[items.length - 1];
+				let indexItems = index.get(indexValue);
+				return indexItems && indexItems[indexItems.length - 1];
 			}
 
 			return void 0;
 		}
 
-		return get.call(this, key);
+		return get.call(this, indexValue);
 	}
 });

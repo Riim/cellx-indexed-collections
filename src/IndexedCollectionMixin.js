@@ -7,8 +7,8 @@ let nextUID = Utils.nextUID;
 export default ObservableCollectionMixin.extend({
 	constructor: function IndexedCollectionMixin(opts) {
 		this._indexesConfig = opts && opts.indexes ?
-			opts.indexes.map(indexConfig => typeof indexConfig == 'string' ? { keyName: indexConfig } : indexConfig) :
-			[{ keyName: 'id', keyGenerator: nextUID }];
+			opts.indexes.map(indexConfig => typeof indexConfig == 'string' ? { key: indexConfig } : indexConfig) :
+			[{ key: 'id', valueGenerator: nextUID }];
 
 		this._indexes = Object.create(null);
 	},
@@ -23,34 +23,29 @@ export default ObservableCollectionMixin.extend({
 
 			for (let i = indexesConfig.length; i;) {
 				let indexConfig = indexesConfig[--i];
-				let keyName = indexConfig.keyName;
-				let index = indexes[keyName] || (indexes[keyName] = new Map());
-				let key = value[keyName];
+				let indexKey = indexConfig.key;
+				let index = indexes[indexKey] || (indexes[indexKey] = new Map());
+				let indexValue = value[indexKey];
 
-				if (key == null) {
-					let keyGenerator = indexConfig.keyGenerator;
+				if (indexValue === undefined) {
+					let indexValueGenerator = indexConfig.valueGenerator;
 
-					if (keyGenerator) {
+					if (indexValueGenerator) {
 						do {
-							key = keyGenerator();
-						} while (index.has(key));
+							indexValue = indexValueGenerator();
+						} while (index.has(indexValue));
 
-						Object.defineProperty(value, keyName, {
-							configurable: false,
-							enumerable: false,
-							writable: false,
-							value: key
-						});
+						Object.defineProperty(value, indexKey, { value: indexValue });
 					}
 				}
 
-				if (key != null) {
-					let items = index.get(key);
+				if (indexValue !== undefined) {
+					let indexItems = index.get(indexValue);
 
-					if (items) {
-						items.push(value);
+					if (indexItems) {
+						indexItems.push(value);
 					} else {
-						index.set(key, [value]);
+						index.set(indexValue, [value]);
 					}
 				}
 			}
@@ -68,17 +63,17 @@ export default ObservableCollectionMixin.extend({
 			let indexes = this._indexes;
 
 			for (let i = indexesConfig.length; i;) {
-				let keyName = indexesConfig[--i].keyName;
-				let key = value[keyName];
+				let indexKey = indexesConfig[--i].key;
+				let indexValue = value[indexKey];
 
-				if (key != null) {
-					let index = indexes[keyName];
-					let items = index.get(key);
+				if (indexValue !== undefined) {
+					let index = indexes[indexKey];
+					let indexItems = index.get(indexValue);
 
-					if (items.length == 1) {
-						index.delete(key);
+					if (indexItems.length == 1) {
+						index.delete(indexValue);
 					} else {
-						items.pop();
+						indexItems.pop();
 					}
 				}
 			}
