@@ -1,4 +1,4 @@
-import { ObservableMap } from 'cellx';
+import { ObservableMap, Utils } from 'cellx';
 import IndexedCollectionMixin from './IndexedCollectionMixin';
 
 let { contains, get } = ObservableMap.prototype;
@@ -13,13 +13,13 @@ let { contains, get } = ObservableMap.prototype;
  *     indexes?: Array<string | { key: string, valueGenerator?: () -> string }>
  * }) -> IndexedMap;
  */
-export default ObservableMap.extend({
-	Implements: [IndexedCollectionMixin],
+export default function IndexedMap(items, opts) {
+	IndexedCollectionMixin.call(this, opts);
+	ObservableMap.call(this, items, opts);
+}
 
-	constructor: function IndexedMap(items, opts) {
-		IndexedCollectionMixin.call(this, opts);
-		ObservableMap.call(this, items, opts);
-	},
+IndexedMap.prototype = Utils.mixin({ __proto__: ObservableMap.prototype }, IndexedCollectionMixin.prototype, {
+	constructor: IndexedMap,
 
 	/**
 	 * @override
@@ -49,7 +49,7 @@ export default ObservableMap.extend({
 				return indexItems && indexItems[indexItems.length - 1];
 			}
 
-			return void 0;
+			return undefined;
 		}
 
 		return get.call(this, indexValue);

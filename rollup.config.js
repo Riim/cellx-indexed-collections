@@ -2,7 +2,7 @@ import eslint from 'rollup-plugin-eslint';
 import babel from 'rollup-plugin-babel';
 
 export default {
-	entry: 'src/cellx-indexed-collections.js',
+	entry: 'src/index.js',
 
 	external: ['cellx'],
 	globals: { cellx: 'cellx' },
@@ -10,7 +10,7 @@ export default {
 	format: 'umd',
 	moduleName: 'cellxIndexedCollections',
 
-	dest: 'dist/cellx-indexed-collections.js',
+	dest: 'dist/index.js',
 
 	plugins: [
 		eslint(),

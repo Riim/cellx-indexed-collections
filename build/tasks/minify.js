@@ -5,7 +5,7 @@ var rename = require('gulp-rename');
 
 gulp.task('minify', function(done) {
 	pump([
-		gulp.src('dist/cellx-indexed-collections.js'),
+		gulp.src('dist/index.js'),
 		uglify(),
 		rename({ suffix: '.min' }),
 		gulp.dest('dist')

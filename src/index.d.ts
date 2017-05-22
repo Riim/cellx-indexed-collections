@@ -5,7 +5,7 @@ interface IIndexedMapOptions {
 	indexes: Array<string | { keyName: string, keyGenerator?: () => string }>;
 }
 
-export declare class IndexedMap<K, V> extends ObservableMap<K, V> {
+export declare class IndexedMap<K = any, V = any> extends ObservableMap<K, V> {
 	constructor(entries?: ObservableMapEntries<K, V>, opts?: IIndexedMapOptions);
 	contains(value: V): boolean;
 	contains(indexValue: any, indexKey: string): boolean;
@@ -20,7 +20,7 @@ interface IIndexedListOptions<T> {
 	indexes: Array<string | { keyName: string, keyGenerator?: () => string }>;
 }
 
-export declare class IndexedList<T> extends ObservableList<T> {
+export declare class IndexedList<T = any> extends ObservableList<T> {
 	constructor(items?: ObservableListItems<T>, opts?: IIndexedListOptions<T>);
 	contains(value: T): boolean;
 	contains(indexValue: any, indexKey: string): boolean;

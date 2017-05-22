@@ -4,15 +4,15 @@ let { _registerValue, _unregisterValue } = ObservableCollectionMixin.prototype;
 let Map = JS.Map;
 let nextUID = Utils.nextUID;
 
-export default ObservableCollectionMixin.extend({
-	constructor: function IndexedCollectionMixin(opts) {
-		this._indexesConfig = opts && opts.indexes ?
-			opts.indexes.map(indexConfig => typeof indexConfig == 'string' ? { key: indexConfig } : indexConfig) :
-			[{ key: 'id', valueGenerator: nextUID }];
+export default function IndexedCollectionMixin(opts) {
+	this._indexesConfig = opts && opts.indexes ?
+		opts.indexes.map(indexConfig => typeof indexConfig == 'string' ? { key: indexConfig } : indexConfig) :
+		[{ key: 'id', valueGenerator: nextUID }];
 
-		this._indexes = Object.create(null);
-	},
+	this._indexes = Object.create(null);
+}
 
+IndexedCollectionMixin.prototype = {
 	/**
 	 * @override
 	 */
@@ -89,4 +89,4 @@ export default ObservableCollectionMixin.extend({
 		this._indexes = Object.create(null);
 		Object.getPrototypeOf(this.constructor.prototype).clear.call(this);
 	}
-});
+};

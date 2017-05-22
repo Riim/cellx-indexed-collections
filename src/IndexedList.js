@@ -1,4 +1,4 @@
-import { ObservableList } from 'cellx';
+import { ObservableList, Utils } from 'cellx';
 import IndexedCollectionMixin from './IndexedCollectionMixin';
 
 let { contains, get } = ObservableList.prototype;
@@ -15,13 +15,13 @@ let { contains, get } = ObservableList.prototype;
  *     indexes?: Array<string | { key: string, valueGenerator?: () -> string }>
  * }) -> IndexedList;
  */
-export default ObservableList.extend({
-	Implements: [IndexedCollectionMixin],
+export default function IndexedList(items, opts) {
+	IndexedCollectionMixin.call(this, opts);
+	ObservableList.call(this, items, opts);
+}
 
-	constructor: function IndexedList(items, opts) {
-		IndexedCollectionMixin.call(this, opts);
-		ObservableList.call(this, items, opts);
-	},
+IndexedList.prototype = Utils.mixin({ __proto__: ObservableList.prototype }, IndexedCollectionMixin.prototype, {
+	constructor: IndexedList,
 
 	/**
 	 * @override
@@ -51,7 +51,7 @@ export default ObservableList.extend({
 				return indexItems && indexItems[indexItems.length - 1];
 			}
 
-			return void 0;
+			return undefined;
 		}
 
 		return get.call(this, indexValue);
