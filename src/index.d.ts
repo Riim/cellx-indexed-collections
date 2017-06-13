@@ -6,7 +6,7 @@ interface IIndexedMapOptions {
 }
 
 export declare class IndexedMap<K = any, V = any> extends ObservableMap<K, V> {
-	constructor(entries?: ObservableMapEntries<K, V>, opts?: IIndexedMapOptions);
+	constructor(entries?: ObservableMapEntries<K, V> | null, opts?: IIndexedMapOptions);
 	contains(value: V): boolean;
 	contains(indexValue: any, indexKey: string): boolean;
 	get(key: K): V;
@@ -21,7 +21,7 @@ interface IIndexedListOptions<T> {
 }
 
 export declare class IndexedList<T = any> extends ObservableList<T> {
-	constructor(items?: ObservableListItems<T>, opts?: IIndexedListOptions<T>);
+	constructor(items?: ObservableListItems<T> | null, opts?: IIndexedListOptions<T>);
 	contains(value: T): boolean;
 	contains(indexValue: any, indexKey: string): boolean;
 	get(index: number): T;
