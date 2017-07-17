@@ -1,7 +1,7 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('cellx')) :
 	typeof define === 'function' && define.amd ? define(['exports', 'cellx'], factory) :
-	(factory((global.cellxIndexedCollections = global['cellx-indexed-collections'] = global.cellxIndexedCollections || {}),global.cellx));
+	(factory((global.cellxIndexedCollections = global['cellx-indexed-collections'] = {}),global.cellx));
 }(this, (function (exports,cellx) { 'use strict';
 
 var _ObservableCollection = cellx.ObservableCollectionMixin.prototype;
@@ -129,7 +129,7 @@ IndexedMap.prototype = cellx.Utils.mixin({ __proto__: cellx.ObservableMap.protot
   * @typesign (indexValue, indexKey: string) -> boolean;
   */
 	contains: function contains(indexValue, indexKey) {
-		if (arguments.length >= 2) {
+		if (indexKey !== undefined) {
 			var index = this._indexes[indexKey];
 			return !!index && index.has(indexValue);
 		}
@@ -144,7 +144,7 @@ IndexedMap.prototype = cellx.Utils.mixin({ __proto__: cellx.ObservableMap.protot
   * @typesign (indexValue, indexKey: string) -> *;
   */
 	get: function get(indexValue, indexKey) {
-		if (arguments.length >= 2) {
+		if (indexKey !== undefined) {
 			var index = this._indexes[indexKey];
 
 			if (index) {
@@ -190,7 +190,7 @@ IndexedList.prototype = cellx.Utils.mixin({ __proto__: cellx.ObservableList.prot
   * @typesign (indexValue, indexKey: string) -> boolean;
   */
 	contains: function contains(indexValue, indexKey) {
-		if (arguments.length >= 2) {
+		if (indexKey !== undefined) {
 			var index = this._indexes[indexKey];
 			return !!index && index.has(indexValue);
 		}
@@ -205,7 +205,7 @@ IndexedList.prototype = cellx.Utils.mixin({ __proto__: cellx.ObservableList.prot
   * @typesign (indexValue, indexKey: string) -> *;
   */
 	get: function get(indexValue, indexKey) {
-		if (arguments.length >= 2) {
+		if (indexKey !== undefined) {
 			var index = this._indexes[indexKey];
 
 			if (index) {

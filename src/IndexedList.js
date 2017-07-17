@@ -29,7 +29,7 @@ IndexedList.prototype = Utils.mixin({ __proto__: ObservableList.prototype }, Ind
 	 * @typesign (indexValue, indexKey: string) -> boolean;
 	 */
 	contains(indexValue, indexKey) {
-		if (arguments.length >= 2) {
+		if (indexKey !== undefined) {
 			let index = this._indexes[indexKey];
 			return !!index && index.has(indexValue);
 		}
@@ -43,7 +43,7 @@ IndexedList.prototype = Utils.mixin({ __proto__: ObservableList.prototype }, Ind
 	 * @typesign (indexValue, indexKey: string) -> *;
 	 */
 	get(indexValue, indexKey) {
-		if (arguments.length >= 2) {
+		if (indexKey !== undefined) {
 			let index = this._indexes[indexKey];
 
 			if (index) {
