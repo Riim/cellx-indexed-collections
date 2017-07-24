@@ -1,6 +1,6 @@
 {
   "name": "cellx-indexed-collections",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "",
   "main": "dist/index.js",
   "typings": "src/index.d.ts",
@@ -36,6 +36,6 @@
     "run-sequence": "^2.0.0"
   },
   "dependencies": {
-    "cellx": "^1.7.22"
+    "cellx": "^1.7.25"
   }
 }

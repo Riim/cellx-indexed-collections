@@ -1,4 +1,10 @@
-import { IComparator, ObservableMapEntries, ObservableMap, ObservableListItems, ObservableList } from 'cellx';
+import {
+	IComparator,
+	ObservableList,
+	ObservableListItems,
+	ObservableMap,
+	ObservableMapEntries
+	} from 'cellx';
 
 interface IIndexedMapOptions {
 	adoptsValueChanges?: boolean;
@@ -9,8 +15,8 @@ export declare class IndexedMap<K = any, V = any> extends ObservableMap<K, V> {
 	constructor(entries?: ObservableMapEntries<K, V> | null, opts?: IIndexedMapOptions);
 	contains(value: V): boolean;
 	contains(indexValue: any, indexKey: string): boolean;
-	get(key: K): V;
-	get(indexValue: any, indexKey: string): V;
+	get(key: K): V | undefined;
+	get(indexValue: any, indexKey: string): V | undefined;
 }
 
 interface IIndexedListOptions<T> {
@@ -24,6 +30,6 @@ export declare class IndexedList<T = any> extends ObservableList<T> {
 	constructor(items?: ObservableListItems<T> | null, opts?: IIndexedListOptions<T>);
 	contains(value: T): boolean;
 	contains(indexValue: any, indexKey: string): boolean;
-	get(index: number): T;
-	get(indexValue: any, indexKey: string): T;
+	get(index: number): T | undefined;
+	get(indexValue: any, indexKey: string): T | undefined;
 }
