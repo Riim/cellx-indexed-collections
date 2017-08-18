@@ -1,14 +1,13 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('cellx')) :
-	typeof define === 'function' && define.amd ? define(['exports', 'cellx'], factory) :
-	(factory((global.cellxIndexedCollections = global['cellx-indexed-collections'] = {}),global.cellx));
-}(this, (function (exports,cellx) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@riim/map-set-polyfill'), require('cellx')) :
+	typeof define === 'function' && define.amd ? define(['exports', '@riim/map-set-polyfill', 'cellx'], factory) :
+	(factory((global.cellxIndexedCollections = global['cellx-indexed-collections'] = {}),global._riim_mapSetPolyfill,global.cellx));
+}(this, (function (exports,_riim_mapSetPolyfill,cellx) { 'use strict';
 
 var _ObservableCollection = cellx.ObservableCollectionMixin.prototype;
 var _registerValue2 = _ObservableCollection._registerValue;
 var _unregisterValue2 = _ObservableCollection._unregisterValue;
 
-var Map = cellx.JS.Map;
 var nextUID = cellx.Utils.nextUID;
 
 function IndexedCollectionMixin(opts) {
@@ -31,7 +30,7 @@ IndexedCollectionMixin.prototype = {
 			for (var i = indexesConfig.length; i;) {
 				var indexConfig = indexesConfig[--i];
 				var indexKey = indexConfig.key;
-				var index = indexes[indexKey] || (indexes[indexKey] = new Map());
+				var index = indexes[indexKey] || (indexes[indexKey] = new _riim_mapSetPolyfill.Map());
 				var indexValue = value[indexKey];
 
 				if (indexValue === undefined) {

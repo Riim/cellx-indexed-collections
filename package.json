@@ -1,6 +1,6 @@
 {
   "name": "cellx-indexed-collections",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "",
   "main": "dist/index.js",
   "typings": "src/index.d.ts",
@@ -30,12 +30,12 @@
     "pump": "^1.0.2",
     "require-dir": "^0.3.2",
     "rimraf": "^2.6.1",
-    "rollup": "^0.45.2",
-    "rollup-plugin-babel": "^2.7.1",
+    "rollup": "^0.47.6",
+    "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-eslint": "^4.0.0",
-    "run-sequence": "^2.0.0"
+    "run-sequence": "^2.1.0"
   },
   "dependencies": {
-    "cellx": "^1.7.25"
+    "cellx": "^1.7.34"
   }
 }

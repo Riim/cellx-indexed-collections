@@ -1,7 +1,7 @@
-import { ObservableCollectionMixin, JS, Utils } from 'cellx';
+import { Map } from '@riim/map-set-polyfill';
+import { ObservableCollectionMixin, Utils } from 'cellx';
 
 let { _registerValue, _unregisterValue } = ObservableCollectionMixin.prototype;
-let Map = JS.Map;
 let nextUID = Utils.nextUID;
 
 export default function IndexedCollectionMixin(opts) {
