@@ -20,7 +20,7 @@ export default function IndexedList(items, opts) {
 	ObservableList.call(this, items, opts);
 }
 
-IndexedList.prototype = Utils.mixin({ __proto__: ObservableList.prototype }, IndexedCollectionMixin.prototype, {
+IndexedList.prototype = Utils.mixin({ __proto__: ObservableList.prototype }, [IndexedCollectionMixin.prototype, {
 	constructor: IndexedList,
 
 	/**
@@ -56,4 +56,4 @@ IndexedList.prototype = Utils.mixin({ __proto__: ObservableList.prototype }, Ind
 
 		return get.call(this, indexValue);
 	}
-});
+}]);

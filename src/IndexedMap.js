@@ -18,7 +18,7 @@ export default function IndexedMap(items, opts) {
 	ObservableMap.call(this, items, opts);
 }
 
-IndexedMap.prototype = Utils.mixin({ __proto__: ObservableMap.prototype }, IndexedCollectionMixin.prototype, {
+IndexedMap.prototype = Utils.mixin({ __proto__: ObservableMap.prototype }, [IndexedCollectionMixin.prototype, {
 	constructor: IndexedMap,
 
 	/**
@@ -54,4 +54,4 @@ IndexedMap.prototype = Utils.mixin({ __proto__: ObservableMap.prototype }, Index
 
 		return get.call(this, indexValue);
 	}
-});
+}]);

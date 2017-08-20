@@ -2,18 +2,26 @@ import eslint from 'rollup-plugin-eslint';
 import babel from 'rollup-plugin-babel';
 
 export default {
-	entry: 'src/index.js',
+	input: 'src/index.js',
 
-	external: ['cellx'],
-	globals: { cellx: 'cellx' },
-
-	format: 'umd',
-	moduleName: 'cellxIndexedCollections',
-
-	dest: 'dist/index.js',
+	external: [
+		'cellx'
+	],
 
 	plugins: [
 		eslint(),
-		babel({ exclude: 'node_modules/**' })
-	]
+		babel({
+			exclude: 'node_modules/**'
+		})
+	],
+
+	output: {
+		file: 'dist/index.js',
+		format: 'umd',
+		name: 'cellxIndexedCollections',
+
+		globals: {
+			cellx: 'cellx'
+		}
+	}
 };

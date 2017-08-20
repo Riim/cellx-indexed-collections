@@ -1,8 +1,8 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@riim/map-set-polyfill'), require('cellx')) :
 	typeof define === 'function' && define.amd ? define(['exports', '@riim/map-set-polyfill', 'cellx'], factory) :
-	(factory((global.cellxIndexedCollections = global['cellx-indexed-collections'] = {}),global._riim_mapSetPolyfill,global.cellx));
-}(this, (function (exports,_riim_mapSetPolyfill,cellx) { 'use strict';
+	(factory((global.cellxIndexedCollections = global['cellx-indexed-collections'] = {}),global.mapSetPolyfill,global.cellx));
+}(this, (function (exports,mapSetPolyfill,cellx) { 'use strict';
 
 var _ObservableCollection = cellx.ObservableCollectionMixin.prototype;
 var _registerValue2 = _ObservableCollection._registerValue;
@@ -30,7 +30,7 @@ IndexedCollectionMixin.prototype = {
 			for (var i = indexesConfig.length; i;) {
 				var indexConfig = indexesConfig[--i];
 				var indexKey = indexConfig.key;
-				var index = indexes[indexKey] || (indexes[indexKey] = new _riim_mapSetPolyfill.Map());
+				var index = indexes[indexKey] || (indexes[indexKey] = new mapSetPolyfill.Map());
 				var indexValue = value[indexKey];
 
 				if (indexValue === undefined) {
@@ -119,7 +119,7 @@ function IndexedMap(items, opts) {
 	cellx.ObservableMap.call(this, items, opts);
 }
 
-IndexedMap.prototype = cellx.Utils.mixin({ __proto__: cellx.ObservableMap.prototype }, IndexedCollectionMixin.prototype, {
+IndexedMap.prototype = cellx.Utils.mixin({ __proto__: cellx.ObservableMap.prototype }, [IndexedCollectionMixin.prototype, {
 	constructor: IndexedMap,
 
 	/**
@@ -156,7 +156,7 @@ IndexedMap.prototype = cellx.Utils.mixin({ __proto__: cellx.ObservableMap.protot
 
 		return _get.call(this, indexValue);
 	}
-});
+}]);
 
 var _ObservableList$proto = cellx.ObservableList.prototype;
 var _contains$1 = _ObservableList$proto.contains;
@@ -180,7 +180,7 @@ function IndexedList(items, opts) {
 	cellx.ObservableList.call(this, items, opts);
 }
 
-IndexedList.prototype = cellx.Utils.mixin({ __proto__: cellx.ObservableList.prototype }, IndexedCollectionMixin.prototype, {
+IndexedList.prototype = cellx.Utils.mixin({ __proto__: cellx.ObservableList.prototype }, [IndexedCollectionMixin.prototype, {
 	constructor: IndexedList,
 
 	/**
@@ -217,7 +217,7 @@ IndexedList.prototype = cellx.Utils.mixin({ __proto__: cellx.ObservableList.prot
 
 		return _get$1.call(this, indexValue);
 	}
-});
+}]);
 
 exports.IndexedCollectionMixin = IndexedCollectionMixin;
 exports.IndexedMap = IndexedMap;
