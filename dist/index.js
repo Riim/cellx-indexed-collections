@@ -1,8 +1,8 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@riim/map-set-polyfill'), require('cellx')) :
-	typeof define === 'function' && define.amd ? define(['exports', '@riim/map-set-polyfill', 'cellx'], factory) :
-	(factory((global.cellxIndexedCollections = global['cellx-indexed-collections'] = {}),global.mapSetPolyfill,global.cellx));
-}(this, (function (exports,mapSetPolyfill,cellx) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@riim/map-set-polyfill'), require('cellx'), require('@riim/mixin')) :
+	typeof define === 'function' && define.amd ? define(['exports', '@riim/map-set-polyfill', 'cellx', '@riim/mixin'], factory) :
+	(factory((global.cellxIndexedCollections = global['cellx-indexed-collections'] = {}),global.mapSetPolyfill,global.cellx,global.mixin));
+}(this, (function (exports,mapSetPolyfill,cellx,mixin) { 'use strict';
 
 var _ObservableCollection = cellx.ObservableCollectionMixin.prototype;
 var _registerValue2 = _ObservableCollection._registerValue;
@@ -119,7 +119,7 @@ function IndexedMap(items, opts) {
 	cellx.ObservableMap.call(this, items, opts);
 }
 
-IndexedMap.prototype = cellx.Utils.mixin({ __proto__: cellx.ObservableMap.prototype }, [IndexedCollectionMixin.prototype, {
+IndexedMap.prototype = mixin.mixin({ __proto__: cellx.ObservableMap.prototype }, [IndexedCollectionMixin.prototype, {
 	constructor: IndexedMap,
 
 	/**
@@ -180,7 +180,7 @@ function IndexedList(items, opts) {
 	cellx.ObservableList.call(this, items, opts);
 }
 
-IndexedList.prototype = cellx.Utils.mixin({ __proto__: cellx.ObservableList.prototype }, [IndexedCollectionMixin.prototype, {
+IndexedList.prototype = mixin.mixin({ __proto__: cellx.ObservableList.prototype }, [IndexedCollectionMixin.prototype, {
 	constructor: IndexedList,
 
 	/**

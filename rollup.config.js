@@ -5,6 +5,8 @@ export default {
 	input: 'src/index.js',
 
 	external: [
+		'@riim/map-set-polyfill',
+		'@riim/mixin',
 		'cellx'
 	],
 
@@ -21,6 +23,8 @@ export default {
 		name: 'cellxIndexedCollections',
 
 		globals: {
+			'@riim/map-set-polyfill': 'mapSetPolyfill',
+			'@riim/mixin': 'mixin',
 			cellx: 'cellx'
 		}
 	}

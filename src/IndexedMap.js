@@ -1,4 +1,5 @@
-import { ObservableMap, Utils } from 'cellx';
+import { mixin } from '@riim/mixin';
+import { ObservableMap } from 'cellx';
 import IndexedCollectionMixin from './IndexedCollectionMixin';
 
 let { contains, get } = ObservableMap.prototype;
@@ -18,7 +19,7 @@ export default function IndexedMap(items, opts) {
 	ObservableMap.call(this, items, opts);
 }
 
-IndexedMap.prototype = Utils.mixin({ __proto__: ObservableMap.prototype }, [IndexedCollectionMixin.prototype, {
+IndexedMap.prototype = mixin({ __proto__: ObservableMap.prototype }, [IndexedCollectionMixin.prototype, {
 	constructor: IndexedMap,
 
 	/**

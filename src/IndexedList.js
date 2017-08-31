@@ -1,4 +1,5 @@
-import { ObservableList, Utils } from 'cellx';
+import { mixin } from '@riim/mixin';
+import { ObservableList } from 'cellx';
 import IndexedCollectionMixin from './IndexedCollectionMixin';
 
 let { contains, get } = ObservableList.prototype;
@@ -20,7 +21,7 @@ export default function IndexedList(items, opts) {
 	ObservableList.call(this, items, opts);
 }
 
-IndexedList.prototype = Utils.mixin({ __proto__: ObservableList.prototype }, [IndexedCollectionMixin.prototype, {
+IndexedList.prototype = mixin({ __proto__: ObservableList.prototype }, [IndexedCollectionMixin.prototype, {
 	constructor: IndexedList,
 
 	/**
