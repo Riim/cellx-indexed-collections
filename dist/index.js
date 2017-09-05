@@ -1,19 +1,18 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@riim/map-set-polyfill'), require('cellx'), require('@riim/mixin')) :
-	typeof define === 'function' && define.amd ? define(['exports', '@riim/map-set-polyfill', 'cellx', '@riim/mixin'], factory) :
-	(factory((global.cellxIndexedCollections = global['cellx-indexed-collections'] = {}),global.mapSetPolyfill,global.cellx,global.mixin));
-}(this, (function (exports,mapSetPolyfill,cellx,mixin) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@riim/map-set-polyfill'), require('@riim/next-uid'), require('cellx'), require('@riim/mixin')) :
+	typeof define === 'function' && define.amd ? define(['exports', '@riim/map-set-polyfill', '@riim/next-uid', 'cellx', '@riim/mixin'], factory) :
+	(factory((global.cellxIndexedCollections = {}),global.mapSetPolyfill,global.nextUID,global.cellx,global.mixin));
+}(this, (function (exports,mapSetPolyfill,nextUid,cellx,mixin) { 'use strict';
 
 var _ObservableCollection = cellx.ObservableCollectionMixin.prototype;
 var _registerValue2 = _ObservableCollection._registerValue;
 var _unregisterValue2 = _ObservableCollection._unregisterValue;
 
-var nextUID = cellx.Utils.nextUID;
 
 function IndexedCollectionMixin(opts) {
 	this._indexesConfig = opts && opts.indexes ? opts.indexes.map(function (indexConfig) {
 		return typeof indexConfig == 'string' ? { key: indexConfig } : indexConfig;
-	}) : [{ key: 'id', valueGenerator: nextUID }];
+	}) : [{ key: 'id', valueGenerator: nextUid.nextUID }];
 
 	this._indexes = Object.create(null);
 }

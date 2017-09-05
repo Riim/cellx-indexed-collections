@@ -7,6 +7,7 @@ export default {
 	external: [
 		'@riim/map-set-polyfill',
 		'@riim/mixin',
+		'@riim/next-uid',
 		'cellx'
 	],
 
@@ -25,6 +26,7 @@ export default {
 		globals: {
 			'@riim/map-set-polyfill': 'mapSetPolyfill',
 			'@riim/mixin': 'mixin',
+			'@riim/next-uid': 'nextUID',
 			cellx: 'cellx'
 		}
 	}
