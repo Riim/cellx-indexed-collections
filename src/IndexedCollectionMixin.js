@@ -1,8 +1,8 @@
 import { Map } from '@riim/map-set-polyfill';
 import { nextUID } from '@riim/next-uid';
-import { ObservableCollectionMixin } from 'cellx';
+import { ObservableCollection } from 'cellx';
 
-let { _registerValue, _unregisterValue } = ObservableCollectionMixin.prototype;
+let { _registerValue, _unregisterValue } = ObservableCollection.prototype;
 
 export default function IndexedCollectionMixin(opts) {
 	this._indexesConfig = opts && opts.indexes ?

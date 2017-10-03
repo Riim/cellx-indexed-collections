@@ -4,7 +4,7 @@
 	(factory((global.cellxIndexedCollections = {}),global.mapSetPolyfill,global.nextUID,global.cellx,global.mixin));
 }(this, (function (exports,mapSetPolyfill,nextUid,cellx,mixin) { 'use strict';
 
-var _ObservableCollection = cellx.ObservableCollectionMixin.prototype;
+var _ObservableCollection = cellx.ObservableCollection.prototype;
 var _registerValue2 = _ObservableCollection._registerValue;
 var _unregisterValue2 = _ObservableCollection._unregisterValue;
 
