@@ -51,7 +51,7 @@ IndexedCollectionMixin.prototype = {
 			}
 		}
 
-		_registerValue.call(this, value);
+		return _registerValue.call(this, value);
 	},
 
 	/**
@@ -79,7 +79,7 @@ IndexedCollectionMixin.prototype = {
 			}
 		}
 
-		_unregisterValue.call(this, value);
+		return _unregisterValue.call(this, value);
 	},
 
 	/**
