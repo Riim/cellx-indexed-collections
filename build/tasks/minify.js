@@ -1,13 +1,11 @@
-var pump = require('pump');
-var gulp = require('gulp');
-var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
+let pump = require('pump');
+let gulp = require('gulp');
+let uglify = require('gulp-uglify');
+let rename = require('gulp-rename');
 
-gulp.task('minify', function(done) {
-	pump([
-		gulp.src('dist/index.js'),
-		uglify(),
-		rename({ suffix: '.min' }),
-		gulp.dest('dist')
-	], done);
+gulp.task('minify', done => {
+	pump(
+		[gulp.src('dist/index.js'), uglify(), rename({ suffix: '.min' }), gulp.dest('dist')],
+		done
+	);
 });

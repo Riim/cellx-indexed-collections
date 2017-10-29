@@ -21,40 +21,43 @@ export default function IndexedList(items, opts) {
 	ObservableList.call(this, items, opts);
 }
 
-IndexedList.prototype = mixin({ __proto__: ObservableList.prototype }, [IndexedCollectionMixin.prototype, {
-	constructor: IndexedList,
+IndexedList.prototype = mixin({ __proto__: ObservableList.prototype }, [
+	IndexedCollectionMixin.prototype,
+	{
+		constructor: IndexedList,
 
-	/**
-	 * @override
-	 * @typesign (value) -> boolean;
-	 * @typesign (indexValue, indexKey: string) -> boolean;
-	 */
-	contains(indexValue, indexKey) {
-		if (indexKey !== undefined) {
-			let index = this._indexes[indexKey];
-			return !!index && index.has(indexValue);
-		}
-
-		return contains.call(this, indexValue);
-	},
-
-	/**
-	 * @override
-	 * @typesign (index: int) -> *;
-	 * @typesign (indexValue, indexKey: string) -> *;
-	 */
-	get(indexValue, indexKey) {
-		if (indexKey !== undefined) {
-			let index = this._indexes[indexKey];
-
-			if (index) {
-				let indexItems = index.get(indexValue);
-				return indexItems && indexItems[indexItems.length - 1];
+		/**
+		 * @override
+		 * @typesign (value) -> boolean;
+		 * @typesign (indexValue, indexKey: string) -> boolean;
+		 */
+		contains(indexValue, indexKey) {
+			if (indexKey !== undefined) {
+				let index = this._indexes[indexKey];
+				return !!index && index.has(indexValue);
 			}
 
-			return undefined;
-		}
+			return contains.call(this, indexValue);
+		},
 
-		return get.call(this, indexValue);
+		/**
+		 * @override
+		 * @typesign (index: int) -> *;
+		 * @typesign (indexValue, indexKey: string) -> *;
+		 */
+		get(indexValue, indexKey) {
+			if (indexKey !== undefined) {
+				let index = this._indexes[indexKey];
+
+				if (index) {
+					let indexItems = index.get(indexValue);
+					return indexItems && indexItems[indexItems.length - 1];
+				}
+
+				return undefined;
+			}
+
+			return get.call(this, indexValue);
+		}
 	}
-}]);
+]);

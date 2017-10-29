@@ -150,7 +150,7 @@ IndexedMap.prototype = mixin.mixin({ __proto__: cellx.ObservableMap.prototype },
 				return indexItems && indexItems[indexItems.length - 1];
 			}
 
-			return undefined;
+			return;
 		}
 
 		return _get.call(this, indexValue);

@@ -1,6 +1,6 @@
-var gulp = require('gulp');
-var runSequence = require('run-sequence');
+let gulp = require('gulp');
+let runSequence = require('run-sequence');
 
-gulp.task('default', function(done) {
+gulp.task('default', done => {
 	runSequence('minify', 'sizereport', done);
 });

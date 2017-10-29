@@ -1,6 +1,6 @@
 {
   "name": "cellx-indexed-collections",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "description": "",
   "main": "dist/index.js",
   "typings": "src/index.d.ts",
@@ -37,6 +37,6 @@
     "@riim/map-set-polyfill": "^1.0.1",
     "@riim/mixin": "^1.0.0",
     "@riim/next-uid": "^1.0.0",
-    "cellx": "^1.7.61"
+    "cellx": "^1.7.68"
   }
 }

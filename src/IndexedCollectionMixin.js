@@ -5,9 +5,13 @@ import { ObservableCollection } from 'cellx';
 let { _registerValue, _unregisterValue } = ObservableCollection.prototype;
 
 export default function IndexedCollectionMixin(opts) {
-	this._indexesConfig = opts && opts.indexes ?
-		opts.indexes.map(indexConfig => typeof indexConfig == 'string' ? { key: indexConfig } : indexConfig) :
-		[{ key: 'id', valueGenerator: nextUID }];
+	this._indexesConfig =
+		opts && opts.indexes
+			? opts.indexes.map(
+					indexConfig =>
+						typeof indexConfig == 'string' ? { key: indexConfig } : indexConfig
+				)
+			: [{ key: 'id', valueGenerator: nextUID }];
 
 	this._indexes = Object.create(null);
 }
@@ -21,7 +25,7 @@ IndexedCollectionMixin.prototype = {
 			let indexesConfig = this._indexesConfig;
 			let indexes = this._indexes;
 
-			for (let i = indexesConfig.length; i;) {
+			for (let i = indexesConfig.length; i; ) {
 				let indexConfig = indexesConfig[--i];
 				let indexKey = indexConfig.key;
 				let index = indexes[indexKey] || (indexes[indexKey] = new Map());
@@ -62,7 +66,7 @@ IndexedCollectionMixin.prototype = {
 			let indexesConfig = this._indexesConfig;
 			let indexes = this._indexes;
 
-			for (let i = indexesConfig.length; i;) {
+			for (let i = indexesConfig.length; i; ) {
 				let indexKey = indexesConfig[--i].key;
 				let indexValue = value[indexKey];
 
